@@ -18,5 +18,9 @@
   "homepage": "https://github.com/kmh0228/robotStudy#readme",
   "devDependencies": {
     "robotjs": "^0.6.0"
+  },
+  "dependencies": {
+    "axios": "^1.6.2",
+    "express": "^4.18.2"
   }
 }
