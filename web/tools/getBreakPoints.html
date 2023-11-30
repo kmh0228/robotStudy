@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div style="width:200px;" id="dom">
+    <span>张</span>
+    <span>阿拉斯加放辣椒水卢卡斯就打开了房间卡拉斯京的福利卡就算了；的房间啊了；框啦放假撒了；的积分啦睡觉发了啥；类开发及阿拉斯加发</span>
+    <span>阿拉斯加放辣椒水卢卡斯就打开了房间卡拉斯京的福利卡就算了；的房间啊了；框啦放假撒了；的积分啦睡觉发了啥；类开发及阿拉斯加发</span>
+  </div>
+</body>
+</html>
+<script>
+
+
+
+const getBreakPoints = function(dom){
+  const spans = document.getElementById('dom').getElementsByTagName('span')
+  // 建立空range
+  const range = document.createRange();
+
+  // 段落本身的范围
+  const rect = dom.getBoundingClientRect();
+  console.log(rect,'自身的范围')
+
+  const breaks = [];
+  let startOffset = 0;
+  let endOffset = 0;
+  console.log(spans[0])
+  range.setStart(spans[0].childNodes[0],0)
+  range.setEnd(spans[1].childNodes[0],11)
+  console.log(range.getBoundingClientRect())
+  
+  // while (endOffset <= this.length) {
+  //   range.setStart(dom, startOffset);
+  //   range.setEnd(dom, endOffset);
+  //   const rangeRect = range.getBoundingClientRect();
+  //   console.log(startOffset,endOffset,rangeRect,'设置文本后的范围')
+
+  //   // const isBreak = rangeRect.top > rect.top;
+  //   // if (isBreak) {
+  //   //   const breakRect = {
+  //   //     left: rangeRect.left,
+  //   //     top: rangeRect.top,
+  //   //     right: rangeRect.right,
+  //   //     bottom:rangeRect.bottom,
+  //   //     width: rangeRect.width
+  //   //   };
+  //   //   breaks.push(breakRect);
+  //   //   startOffset = endOffset;
+  //   // }
+  //   endOffset++;
+  // }
+  return breaks
+}
+
+getBreakPoints(document.getElementById('dom'))
+
+</script>

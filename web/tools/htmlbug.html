@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>动画与focus的冲突，会导致浏览器渲染出bug</title>
+</head>
+<style>
+  *{
+    margin:0;
+    padding:0;
+  }
+  html,body,.container{
+    width:100%;
+    height:100%;
+  }
+  .container{
+    overflow: hidden;
+    position: relative;
+  }
+  .parent{
+    position: relative;
+    width:100px;
+    height:100px;
+    background: blue;
+    top:50%;
+    left:50%;
+    transform: translate(0,900px);
+  }
+  .child{
+    position:absolute;
+    top:0;
+    left:0px;
+    transition-property: left, top;
+    transition-duration: 3s;
+    width:50px;
+    height:50px;
+    background: green;
+  }
+  
+</style>
+<body>
+  <div class="container">
+    <div class="parent">
+      <div class="child">
+        <div class="input" contenteditable="true">编辑</div>
+      </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+
+const par = document.querySelector('.parent')
+const chi = document.querySelector('.child')
+const inp = document.querySelector('.input')
+
+setTimeout(()=>{
+  Object.assign(chi.style,{
+    left:'300px',
+    top:'-900px'
+  })
+  inp.focus()
+},0)
+
+par.addEventListener('transitionend',()=>{
+  console.log('end')
+})
+par.addEventListener('transitionstart',()=>{
+  console.log('start')
+})
+
+</script>

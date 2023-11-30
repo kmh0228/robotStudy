@@ -1,7 +1,7 @@
 const express = require('express')
 var robot = require("robotjs");
 const app = express()
-const port = 3000
+const port = 8020
 
 //设置跨域访问
 app.all("*", function (req, res, next) {
